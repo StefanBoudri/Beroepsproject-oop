@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/jongeren.css">
   <link rel="stylesheet" href="css/nav.css">
-
   <title>Jongeren</title>
 </head>
 
@@ -27,7 +26,7 @@
 
   <h2>Jongeren</h2>
 
-  <form action="<?php ?>" method="post">
+  <form action="databases/jongeren/set.php" method="post">
     <div class="input-group">
       <div class="input-field">
         <label for="activityInput">Voornaam:</label>
@@ -44,7 +43,7 @@
         <input type="date" id="birthInput" name="birthDate" required>
       </div>
 
-      <button>Toevoegen</button>
+      <button name="submit">Toevoegen</button>
     </div>
   </form>
 
@@ -58,7 +57,13 @@
         <th>Actie</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <?php 
+        require_once 'databases/jongeren/jongeren.php';
+        echo Jongere::DisplayJongere($pdo) 
+      ?>
+    
+    </tbody>
   </table>
 
 </body>
