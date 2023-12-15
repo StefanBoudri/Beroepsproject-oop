@@ -80,8 +80,8 @@ class Jongere
                 <td>{$row["firstName"]}</td>
                 <td>{$formattedBirthDate}</td>
                 <td>
-                    <a href="#">Wijzigen</a> |
-                    <a href="#" onclick="">Verwijderen</a>
+                    <a href="">Wijzigen</a> |
+                    <a href="">Verwijderen</a>
                 </td>
             </tr>
             HTML;
