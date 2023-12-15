@@ -55,17 +55,17 @@ class Jongere
         $jongere->Save();
     }
 
-    public static function GetJongere(PDO $pdo): array
+    public static function GetJongeren(PDO $pdo): array
     {
-        $statement = $pdo->prepare("SELECT * FROM " . self::$tableName);
+        $statement = $pdo->prepare("SELECT * FROM " . self::$tableName . " ORDER BY lastName");
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function DisplayJongere(PDO $pdo) : string
+    public static function DisplayJongeren(PDO $pdo) : string
     {
-        $result = self::GetJongere($pdo);
+        $result = self::GetJongeren($pdo);
 
         $html = '';
 
@@ -73,19 +73,18 @@ class Jongere
         {
             $formattedBirthDate = date('d-m-Y', strtotime($row["birthDate"]));
 
-            $html .= '<tr>';
-            
-            $html .= '<td>' . $row["id"] . '</td>';
-            $html .= '<td>' . $row["lastName"] . '</td>';
-            $html .= '<td>' . $row["firstName"] . '</td>';
-            $html .= '<td>' . $formattedBirthDate . '</td>';
-
-            $html .= '<td>';
-            $html .= '<a href="#">Wijzigen</a> | ';
-            $html .= '<a href="#" onclick="return confirm(\'Weet je zeker dat je dit instituut wilt verwijderen?\')">Verwijderen</a>';
-            $html .= '</td>';
-
-            $html .= '</tr>';
+            $html .= <<<HTML
+            <tr>
+                <td>{$row["id"]}</td>
+                <td>{$row["lastName"]}</td>
+                <td>{$row["firstName"]}</td>
+                <td>{$formattedBirthDate}</td>
+                <td>
+                    <a href="#">Wijzigen</a> |
+                    <a href="#" onclick="">Verwijderen</a>
+                </td>
+            </tr>
+            HTML;
 
         }
 

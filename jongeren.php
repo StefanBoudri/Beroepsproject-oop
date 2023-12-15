@@ -58,11 +58,10 @@
       </tr>
     </thead>
     <tbody>
-      <?php 
-        require_once 'databases/jongeren/jongeren.php';
-        echo Jongere::DisplayJongere($pdo) 
+      <?php
+      require_once 'databases/jongeren/jongeren.php';
+      echo Jongere::DisplayJongeren($pdo)
       ?>
-    
     </tbody>
   </table>
 
