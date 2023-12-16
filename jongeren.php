@@ -26,7 +26,7 @@
 
   <h2>Jongeren</h2>
 
-  <form action="databases/jongeren/set.php" method="post">
+  <form action="databases/jongeren/process.php" method="post">
     <div class="input-group">
       <div class="input-field">
         <label for="activityInput">Voornaam:</label>
